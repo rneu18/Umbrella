@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Umbrella</string>
+    <string-array name="temperature_option">
+        <item>Celsius</item>
+        <item>Fahrenheit</item>
+    </string-array>
 </resources>
