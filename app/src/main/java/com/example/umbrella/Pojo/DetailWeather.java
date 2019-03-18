@@ -1,7 +1,6 @@
 package com.example.umbrella.Pojo;
 
-import com.example.umbrella.Pojo.City;
-import com.example.umbrella.Pojo.List;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -18,7 +17,7 @@ public class DetailWeather {
     private Integer cnt;
     @SerializedName("list")
     @Expose
-    private java.util.List<List> list = null;
+    private java.util.List<List<T>> list = null;
     @SerializedName("city")
     @Expose
     private City city;
@@ -47,11 +46,11 @@ public class DetailWeather {
         this.cnt = cnt;
     }
 
-    public java.util.List<List> getList() {
+    public java.util.List<List<T>> getList() {
         return list;
     }
 
-    public void setList(java.util.List<List> list) {
+    public void setList(java.util.List<List<T>> list) {
         this.list = list;
     }
 

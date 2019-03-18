@@ -3,7 +3,7 @@ package com.example.umbrella.Pojo;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class List {
+public class List<T> {
 
     @SerializedName("dt")
     @Expose
