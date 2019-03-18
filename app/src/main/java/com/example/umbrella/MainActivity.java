@@ -43,12 +43,7 @@ public class MainActivity extends AppCompatActivity {
     String myTime;
     String myIcon;
     String current_temp;
-    public static ArrayList<String> tempTody = new ArrayList<>();
-    static ArrayList<String> iconToday = new ArrayList<>();
-    public static ArrayList<String> timeToday = new ArrayList<>();
-    static ArrayList<String> tempNext = new ArrayList<>();
-    static ArrayList<String> iconNext = new ArrayList<>();
-    static ArrayList<String> timeNext = new ArrayList<>();
+
     private ArrayList listItems;
     RecyclerView recyclerView;
 
@@ -184,33 +179,34 @@ public class MainActivity extends AppCompatActivity {
                                     current_temp = String.valueOf(Math.round(((response.body().
                                             getList().get(i).getMain().
                                             getTemp())-273.15))*100.00/100.00);
-                                    tempTody.add((current_temp));
+
                                 }
                                 if (userUnit.trim().equals("Fahrenheit")){
                                     String current_temp = String.valueOf(Math.round((((response.body().
                                             getList().get(i).getMain().
                                             getTemp())-273.15))*9/5+32)*100.00/100.00);
-                                    tempTody.add((current_temp));
+
                                 }
-                                timeToday.add(myTime);
-                                iconToday.add(response.body().getList().get(i).getWeather().get(i).getIcon());
+
+                                myIcon = response.body().getList().get(i).getWeather().get(i).getIcon();
+
 
                             }else if (myDate2.equals(tomorrowDate)){
                                 if (userUnit.trim().equals("Celsius") ){
                                     String current_temp = String.valueOf(Math.round(((response.body().
                                             getList().get(i).getMain().
                                             getTemp())-273.15))*100.00/100.00);
-                                    tempNext.add((current_temp));
+
                                 }
                                 if (userUnit.trim().equals("Fahrenheit")){
                                     String current_temp = String.valueOf(Math.round((((response.body().
                                             getList().get(i).getMain().
                                             getTemp())-273.15))*9/5+32)*100.00/100.00);
-                                    tempNext.add((current_temp));
+
                                 }
-                                timeNext.add(myTime);
+
                                 myIcon = response.body().getList().get(i).getWeather().get(i).getIcon();
-                                iconNext.add(response.body().getList().get(i).getWeather().get(i).getIcon());
+
                             }
 
                             String[] item = {myTime, myIcon, current_temp};
@@ -221,6 +217,16 @@ public class MainActivity extends AppCompatActivity {
 
                     }catch (Exception e){
                     }
+                }else {
+                    getCity = (TextView) findViewById(R.id.location_name);
+                    getDescreption = (TextView) findViewById(R.id.weather_details);
+                    getTemp = (TextView) findViewById(R.id.temperature);
+
+                    LinearLayout topLayout = (LinearLayout) findViewById(R.id.tittle_bar);
+                    getCity.setText("No City Found");
+                    getTemp.setText("");
+                    getDescreption.setText("");
+                    topLayout.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
                 }
 
             }
