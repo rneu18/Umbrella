@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
     TextView getCity, getTemp, getDescreption;
     String endpoint1 = "data/2.5/forecast?zip=";
     String endpoint2 = ",us&appid=";
-    String myApi = "45ce497d7e79f72e88b6cda6ab866839";
+    String myApi = "d32e9228eb6f80897b11799f3b586c0c";
     String tomorrowDate;
     String myDate;
     String myTime;
@@ -99,8 +99,7 @@ public class MainActivity extends AppCompatActivity {
 
                     LinearLayout topLayout = (LinearLayout) findViewById(R.id.tittle_bar);
 
-                    try {
-                        if(response.body().getList().get(0).getDtTxt() != null){
+
                             String date1;
                             date1 = response.body().getList().get(0).getDtTxt();
                             String array1[]= date1.split(" ");
@@ -139,24 +138,10 @@ public class MainActivity extends AppCompatActivity {
                                     && response.body().getList().get(0).getMain().getTemp() >= 288.0){
                                 topLayout.setBackgroundColor(getResources().getColor(R.color.colorMyGrey));
 
-                            }else{
-                                getCity.setText("No City Found");
-                                getTemp.setText("");
-                                getDescreption.setText("");
-                                topLayout.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
-
-                            }
 
                         }
 
-                    } catch(Exception e){
 
-                            getCity.setText("No City Found");
-                            getTemp.setText("");
-                            getDescreption.setText("");
-                            topLayout.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
-
-                    }
                     try{
 
                         Calendar calendar = Calendar.getInstance();
@@ -170,9 +155,9 @@ public class MainActivity extends AppCompatActivity {
                         for(i =0; i>17; i++){
                             String date2;
                             date2 = response.body().getList().get(i).getDtTxt();
-                            String array1[]= date2.split(" ");
+                            String array2[]= date2.split(" ");
                             String myDate2;
-                            myDate2 = array1[0];
+                            myDate2 = array2[0];
                             myTime = String.valueOf(array1[1].charAt(0))+String.valueOf(array1[1].charAt(1))+ ":00";
                             if (myDate2.equals(myDate)){
                                 if (userUnit.trim().equals("Celsius") ){
