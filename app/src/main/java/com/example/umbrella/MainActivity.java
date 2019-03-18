@@ -105,28 +105,30 @@ public class MainActivity extends AppCompatActivity {
                     LinearLayout topLayout = (LinearLayout) findViewById(R.id.tittle_bar);
 
                     try {
-                        String date1;
-                        date1 = response.body().getList().get(0).getDtTxt();
-                        String array1[]= date1.split(" ");
-                        myDate = array1[0];
-                        myTime = String.valueOf(array1[1].charAt(0))+String.valueOf(array1[1].charAt(1))+ ":00";
+                        if(response.body().getList().get(0).getDtTxt() != null){
+                            String date1;
+                            date1 = response.body().getList().get(0).getDtTxt();
+                            String array1[]= date1.split(" ");
 
-                        String country = response.body().getCity().getCountry();
+                            myDate = array1[0];
+                            myTime = String.valueOf(array1[1].charAt(0))+String.valueOf(array1[1].charAt(1))+ ":00";
+
+                            String country = response.body().getCity().getCountry();
                             String city = (response.body().getCity().getName());
                             getDescreption.setText(response.body().getList().get(0).getWeather().get(0).getDescription());
 
                             getCity.setText(city + ", " + country );
                             if (userUnit.trim().equals("Celsius") ){
-                                String current_temp = String.valueOf(Math.round(((response.body().
+                                String current_temp1 = String.valueOf(Math.round(((response.body().
                                         getList().get(0).getMain().
                                         getTemp())-273.15))*100.00/100.00);
-                                getTemp.setText((current_temp));
+                                getTemp.setText((current_temp1));
                             }
                             if (userUnit.trim().equals("Fahrenheit")){
-                                String current_temp = String.valueOf(Math.round((((response.body().
+                                String current_temp1 = String.valueOf(Math.round((((response.body().
                                         getList().get(0).getMain().
                                         getTemp())-273.15))*9/5+32)*100.00/100.00);
-                                getTemp.setText((current_temp));
+                                getTemp.setText((current_temp1));
                             }
 
                             if (response.body().getList().get(0).getMain().getTemp() < 288.0){
@@ -139,14 +141,25 @@ public class MainActivity extends AppCompatActivity {
                             }
 
                             if (response.body().getList().get(0).getMain().getTemp() <= 303.0
-                                && response.body().getList().get(0).getMain().getTemp() >= 288.0){
+                                    && response.body().getList().get(0).getMain().getTemp() >= 288.0){
                                 topLayout.setBackgroundColor(getResources().getColor(R.color.colorMyGrey));
+
+                            }else{
+                                getCity.setText("No City Found");
+                                getTemp.setText("");
+                                getDescreption.setText("");
+                                topLayout.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
+
+                            }
 
                         }
 
                     } catch(Exception e){
 
                             getCity.setText("No City Found");
+                            getTemp.setText("");
+                            getDescreption.setText("");
+                            topLayout.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
 
                     }
                     try{
@@ -209,7 +222,6 @@ public class MainActivity extends AppCompatActivity {
                     }catch (Exception e){
                     }
                 }
-
 
             }
 

@@ -17,7 +17,7 @@ public class DetailWeather {
     private Integer cnt;
     @SerializedName("list")
     @Expose
-    private java.util.List<List<T>> list = null;
+    private java.util.List<List<DetailWeather>> list = null;
     @SerializedName("city")
     @Expose
     private City city;
@@ -46,11 +46,11 @@ public class DetailWeather {
         this.cnt = cnt;
     }
 
-    public java.util.List<List<T>> getList() {
+    public java.util.List<List<DetailWeather>> getList() {
         return list;
     }
 
-    public void setList(java.util.List<List<T>> list) {
+    public void setList(java.util.List<List<DetailWeather>> list) {
         this.list = list;
     }
 
