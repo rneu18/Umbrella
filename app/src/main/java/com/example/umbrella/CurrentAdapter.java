@@ -8,6 +8,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,15 +33,24 @@ public class CurrentAdapter extends RecyclerView.Adapter<CurrentAdapter.CurrentV
 
     @Override
     public void onBindViewHolder( CurrentViewHolder currentViewHolder, int i) {
-       // List<String> item = items.get(i);
-        currentViewHolder.currentTime.setText(items.get(i).toString());
-        currentViewHolder.currentTemp.setText(items.get(i).toString());
+     //  List<String> item = items.get(0).get(i);
+           currentViewHolder.currentTime.setText("Time: "+ items.get(0).get(i*3));
+           currentViewHolder.currentTemp.setText("Temp: "+items.get(0).get(i*3+2));
+           String imageUri = "http://openweathermap.org/img/w/"+items.get(0).get(i*3+1)+".png";
+           //  ImageView currentImage= (ImageView) findViewById(R.id.today_icon);
+           Picasso.with(context).load(imageUri).into(currentViewHolder.currentImage);
+
+
+
+
+
 
     }
 
     @Override
     public int getItemCount() {
-        return items.size();
+        return items.get(0).size()/3;
+
     }
 
     public class CurrentViewHolder extends RecyclerView.ViewHolder{

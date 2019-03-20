@@ -6,14 +6,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:cardBackgroundColor="@color/colorMyGrey"
     android:background="@color/colorPrimaryDark"
+    android:orientation="horizontal"
     android:id="@+id/cv"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-        <TextView
-        android:id="@+id/tomorrow_text"
-        android:layout_width="match_parent"
-        android:layout_height="20dp"
-        android:text="@string/tomorrow"/>
+
             <android.support.v7.widget.LinearLayoutCompat
                 android:id="@+id/details_today"
                 android:layout_width="wrap_content"
