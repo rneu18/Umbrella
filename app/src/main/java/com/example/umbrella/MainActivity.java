@@ -44,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
     String myIcon;
     String current_temp;
     String dateToday;
+    String myTimeF;
     List<String> today_details = new ArrayList<>();
 
     RecyclerView recyclerView;
@@ -158,7 +159,7 @@ public class MainActivity extends AppCompatActivity {
                             String array2[]= date2.split(" ");
                             String myDate2;
                             myDate2 = array2[0];
-                            myTime = String.valueOf(array1[1].charAt(0))+String.valueOf(array1[1].charAt(1))+ ":00";
+                            myTimeF = String.valueOf(array2[1].charAt(0))+String.valueOf(array2[1].charAt(1))+ ":00";
 
 
 
@@ -177,8 +178,8 @@ public class MainActivity extends AppCompatActivity {
                                 }
 
                                 myIcon = response.body().getList().get(i).getWeather().get(0).getIcon();
-                                String[] listOfLists = new String[]{myTime, myIcon, current_temp};
-                                today_details.add(myTime);
+                                String[] listOfLists = new String[]{myTimeF, myIcon, current_temp};
+                                today_details.add(myTimeF);
                                 today_details.add(myIcon);
                                 today_details.add(current_temp);
 
@@ -199,8 +200,8 @@ public class MainActivity extends AppCompatActivity {
 
                                 myIcon = response.body().getList().get(i).getWeather().get(0).getIcon();
 
-                                String[] listOfLists = new String[]{myTime, myIcon, current_temp};
-                                today_details.add(myTime);
+                                String[] listOfLists = new String[]{myTime, myIcon, myTimeF};
+                                today_details.add(myTimeF);
                                 today_details.add(myIcon);
                                 today_details.add(current_temp);
 
