@@ -1,8 +1,6 @@
-package com.example.umbrella.Pojo;
+package com.example.umbrella;
 
-import android.content.ClipData;
 import android.content.Context;
-import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,14 +9,13 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-
-import com.example.umbrella.R;
+import java.util.List;
 
 public class CurrentAdapter extends RecyclerView.Adapter<CurrentAdapter.CurrentViewHolder> {
     private Context context;
-    private ArrayList<ArrayList<String>> items;
+    private List<List<String>> items;
 
-    public CurrentAdapter(Context context, ArrayList<ArrayList<String>> items) {
+    public CurrentAdapter(Context context, List<List<String>> items) {
         this.context = context;
         this.items = items;
     }
@@ -34,7 +31,7 @@ public class CurrentAdapter extends RecyclerView.Adapter<CurrentAdapter.CurrentV
 
     @Override
     public void onBindViewHolder( CurrentViewHolder currentViewHolder, int i) {
-        ArrayList<String> item = items.get(i);
+       // List<String> item = items.get(i);
         currentViewHolder.currentTime.setText(items.get(i).toString());
         currentViewHolder.currentTemp.setText(items.get(i).toString());
 
@@ -55,7 +52,7 @@ public class CurrentAdapter extends RecyclerView.Adapter<CurrentAdapter.CurrentV
         public CurrentViewHolder(View itemView) {
             super(itemView);
             currentImage = (ImageView) itemView.findViewById(R.id.today_icon);
-            currentTemp = (TextView) itemView.findViewById(R.id.details_today);
+            currentTemp = (TextView) itemView.findViewById(R.id.today_temp);
             currentTime = (TextView) itemView.findViewById(R.id.today_time);
         }
     }
