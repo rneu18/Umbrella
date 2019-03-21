@@ -97,7 +97,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<DetailWeather> call, Response<DetailWeather> response) {
                 if (response.body() !=null){
-                    Toast.makeText(MainActivity.this, "Sucess", Toast.LENGTH_LONG).show();
                     getCity = (TextView) findViewById(R.id.location_name);
                     getDescreption = (TextView) findViewById(R.id.weather_details);
                     getTemp = (TextView) findViewById(R.id.temperature);
@@ -160,7 +159,7 @@ public class MainActivity extends AppCompatActivity {
 
 
                         int i;
-                        for(i =0; i<17; i++){
+                        for(i =0; i<response.body().getList().size(); i++){
                             String date2;
                             date2 = response.body().getList().get(i).getDtTxt();
                             String array2[]= date2.split(" ");

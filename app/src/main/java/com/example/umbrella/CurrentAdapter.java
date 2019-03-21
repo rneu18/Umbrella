@@ -34,14 +34,18 @@ public class CurrentAdapter extends RecyclerView.Adapter<CurrentAdapter.CurrentV
 
     @Override
     public void onBindViewHolder( CurrentViewHolder currentViewHolder, int i) {
+        //Context context = currentViewHolder.currentImage.getContext();
 
      //  List<String> item = items.get(0).get(i);
            currentViewHolder.currentTime.setText("Time: "+ items.get(0).get(i*3));
            currentViewHolder.currentTemp.setText("Temp: "+items.get(0).get(i*3+2));
-           String imageUri = "http://openweathermap.org/img/w/10d.png";
+           String imageUri = "openweathermap.org/img/w/10d.png";
            //items.get(0).get(i*3+1)
-           //  ImageView currentImage= (ImageView) findViewById(R.id.today_icon);;
-           Picasso.with(context).load(imageUri).into(currentViewHolder.currentImage);
+        try{
+            Picasso.with(context).load(imageUri).into(currentViewHolder.currentImage);
+        }catch (Exception e) {
+
+        }
 
 
 //        if (Integer.parseInt(items.get(0).get(i*3+2)) < 288.0){
