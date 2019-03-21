@@ -143,9 +143,6 @@ public class MainActivity extends AppCompatActivity {
                                 topLayout.setBackgroundColor(getResources().getColor(R.color.colorMyAqua));
                             }
 
-
-
-
                         Calendar calendar = Calendar.getInstance();
                         Date today = calendar.getTime();
                         calendar.add(Calendar.DAY_OF_YEAR, 1);
@@ -167,8 +164,6 @@ public class MainActivity extends AppCompatActivity {
                             myDate2 = array2[0];
                             myTimeF = String.valueOf(array2[1].charAt(0))+String.valueOf(array2[1].charAt(1))+ ":00";
 
-
-
                             if (myDate2.equals(dateToday)){
                                 if (userUnit.trim().equals("Celsius") ){
                                     current_temp = String.valueOf(Math.round(((response.body().
@@ -184,7 +179,7 @@ public class MainActivity extends AppCompatActivity {
                                 }
 
                                 myIcon = response.body().getList().get(i).getWeather().get(0).getIcon();
-                                String[] listOfLists = new String[]{myTimeF, myIcon, current_temp};
+
                                 today_details.add(myTimeF);
                                 today_details.add(myIcon);
                                 today_details.add(current_temp);
@@ -211,9 +206,6 @@ public class MainActivity extends AppCompatActivity {
                                 today_details.add(myIcon);
                                 today_details.add(current_temp);
 
-                                System.out.println("111111111111111111111" +
-                                        "111111111111111111111111" +
-                                        "11111111111111111111 " +today_details.toString() );
                             } else{
 
                                 if (userUnit.trim().equals("Celsius") ){
@@ -236,10 +228,7 @@ public class MainActivity extends AppCompatActivity {
                                 today_details.add(myIcon);
                                 today_details.add(current_temp);
 
-
-
                             }
-                         //   recyclerView.setAdapter(new CurrentAdapter(MainActivity.this, Collections.singletonList(list));
 
                         }
 
@@ -254,9 +243,6 @@ public class MainActivity extends AppCompatActivity {
                     getDescreption.setText("");
                     topLayout.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
                 }
-                System.out.println("111111111111111111111" +
-                        "1111222222222222222222222222221111111" +
-                        "11111111111111111111 " +today_details);
 
                recyclerView.setAdapter(new CurrentAdapter(MainActivity.this, Collections.singletonList(today_details)));
 
