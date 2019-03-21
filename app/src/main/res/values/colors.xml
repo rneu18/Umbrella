@@ -5,7 +5,8 @@
     <color name="colorAccent">#D81B60</color>
     <color name="colorMyGrey">#8b8989</color>
     <color name="colorOrange">#ffa500</color>
-    <color name="colorDBlue">#1e90ff</color>
+    <color name="colorDBlue">#1e90ff</color>#38CDB3
+    <color name="colorMyAqua">#38CDB3</color>
 
 
 </resources>

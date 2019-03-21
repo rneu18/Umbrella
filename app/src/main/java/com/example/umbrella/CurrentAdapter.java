@@ -69,7 +69,7 @@ public class CurrentAdapter extends RecyclerView.Adapter<CurrentAdapter.CurrentV
 
             if (temp <= 86.0
                     && temp >= 15.0){
-                currentViewHolder.cardLayout.setBackgroundColor(Color.parseColor("#1CC40D"));
+                currentViewHolder.cardLayout.setBackgroundColor(Color.parseColor("#38CDB3"));
             }
 
         }else {
@@ -84,7 +84,7 @@ public class CurrentAdapter extends RecyclerView.Adapter<CurrentAdapter.CurrentV
 
             if (temp <= 86.0
                     && temp >= 59.0){
-                currentViewHolder.cardLayout.setBackgroundColor(Color.parseColor("#1CC40D"));
+                currentViewHolder.cardLayout.setBackgroundColor(Color.parseColor("#38CDB3"));
                 //currentViewHolder.currentTemp.setTextColor(Color.parseColor("#8b8989"));
             }
 

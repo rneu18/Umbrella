@@ -140,7 +140,7 @@ public class MainActivity extends AppCompatActivity {
 
                             if (response.body().getList().get(0).getMain().getTemp() <= 303.0
                                     && response.body().getList().get(0).getMain().getTemp() >= 288.0){
-                                topLayout.setBackgroundColor(getResources().getColor(R.color.colorMyGrey));
+                                topLayout.setBackgroundColor(getResources().getColor(R.color.colorMyAqua));
                             }
 
 
