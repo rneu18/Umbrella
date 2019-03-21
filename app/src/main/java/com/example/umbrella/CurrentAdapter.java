@@ -41,10 +41,12 @@ public class CurrentAdapter extends RecyclerView.Adapter<CurrentAdapter.CurrentV
      //  List<String> item = items.get(0).get(i);
            currentViewHolder.currentTime.setText("Time: "+ items.get(0).get(i*3));
            currentViewHolder.currentTemp.setText("Temp: "+items.get(0).get(i*3+2));
-           String imageUri = "openweathermap.org/img/w/"+items.get(0).get(i*3+1)+".png";
+           String imageUri = "https://openweathermap.org/img/w/"+items.get(0).get(i*3+1)+".png";
+
            //items.get(0).get(i*3+1)
         try{
-            Picasso.with(context).load(imageUri).into(currentViewHolder.currentImage);
+            Picasso.with(currentViewHolder.itemView.getContext()).load(imageUri).into(currentViewHolder.currentImage);
+            System.out.println("try");
         }catch (Exception e) {
 
         }
