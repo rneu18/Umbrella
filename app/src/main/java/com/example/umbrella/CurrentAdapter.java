@@ -1,6 +1,8 @@
 package com.example.umbrella;
 
 import android.content.Context;
+import android.graphics.Color;
+import android.support.v7.widget.LinearLayoutCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -34,12 +36,12 @@ public class CurrentAdapter extends RecyclerView.Adapter<CurrentAdapter.CurrentV
 
     @Override
     public void onBindViewHolder( CurrentViewHolder currentViewHolder, int i) {
-        //Context context = currentViewHolder.currentImage.getContext();
+       // Context context = currentViewHolder.currentImage.getContext();
 
      //  List<String> item = items.get(0).get(i);
            currentViewHolder.currentTime.setText("Time: "+ items.get(0).get(i*3));
            currentViewHolder.currentTemp.setText("Temp: "+items.get(0).get(i*3+2));
-           String imageUri = "openweathermap.org/img/w/10d.png";
+           String imageUri = "openweathermap.org/img/w/"+items.get(0).get(i*3+1)+".png";
            //items.get(0).get(i*3+1)
         try{
             Picasso.with(context).load(imageUri).into(currentViewHolder.currentImage);
@@ -47,24 +49,44 @@ public class CurrentAdapter extends RecyclerView.Adapter<CurrentAdapter.CurrentV
 
         }
 
+        String array1[]= items.get(0).get(i*3+2).split(" ");
+        double temp = Double.parseDouble(array1[0]);
+        String unit = array1[1];
+        if (unit.equals("C")){
+            if (temp < 15.0){
 
-//        if (Integer.parseInt(items.get(0).get(i*3+2)) < 288.0){
-//         //   currentViewHolder.topLayout.setBackgroundColor(context.getResources().getColor(R.color.colorDBlue));
-//
-//        }
-//        if (Integer.parseInt(items.get(0).get(i*3+2)) > 303.0){
-//           // currentViewHolder.topLayout.setBackgroundColor(context.getResources().getColor(R.color.colorOrange));
-//
-//        }
-//
-//        if (Integer.parseInt(items.get(0).get(i*3+2)) <= 303.0
-//                && Integer.parseInt(items.get(0).get(i*3+2)) >= 288.0){
-//          //  currentViewHolder.topLayout.setBackgroundColor(context.getResources().getColor(R.color.colorMyGrey));
-//        }
+                currentViewHolder.cardLayout.setBackgroundColor(Color.parseColor("#1e90ff"));
 
 
+            }
+            if (temp > 30.0){
 
+                currentViewHolder.cardLayout.setBackgroundColor(Color.parseColor("#ffa500"));
 
+            }
+
+            if (temp <= 86.0
+                    && temp >= 15.0){
+                currentViewHolder.cardLayout.setBackgroundColor(Color.parseColor("#1CC40D"));
+            }
+
+        }else {
+            if (temp < 59.0){
+                currentViewHolder.cardLayout.setBackgroundColor(Color.parseColor("#1e90ff"));
+
+            }
+            if (temp > 86.0){
+                currentViewHolder.cardLayout.setBackgroundColor(Color.parseColor("#ffa500"));
+
+            }
+
+            if (temp <= 86.0
+                    && temp >= 59.0){
+                currentViewHolder.cardLayout.setBackgroundColor(Color.parseColor("#1CC40D"));
+                //currentViewHolder.currentTemp.setTextColor(Color.parseColor("#8b8989"));
+            }
+
+        }
 
 
     }
@@ -80,13 +102,13 @@ public class CurrentAdapter extends RecyclerView.Adapter<CurrentAdapter.CurrentV
         ImageView currentImage;
         TextView currentTime;
         TextView currentTemp;
-       // LinearLayout topLayout;
+        LinearLayoutCompat cardLayout;
 
 
 
         public CurrentViewHolder(View itemView) {
             super(itemView);
-          //  topLayout = (LinearLayout) itemView.findViewById(R.id.details_today);
+            cardLayout = (LinearLayoutCompat) itemView.findViewById(R.id.details_today);
             currentImage = (ImageView) itemView.findViewById(R.id.today_icon);
             currentTemp = (TextView) itemView.findViewById(R.id.today_temp);
             currentTime = (TextView) itemView.findViewById(R.id.today_time);
