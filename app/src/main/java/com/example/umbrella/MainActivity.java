@@ -154,6 +154,10 @@ public class MainActivity extends AppCompatActivity {
                         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
                         tomorrowDate = dateFormat.format(tomorrow);
                         dateToday = dateFormat.format(today);
+                        calendar.add(Calendar.DAY_OF_YEAR, 2);
+                        Date tomorrow2 = calendar.getTime();
+                        String tomorrowDate2 = dateFormat.format(tomorrow2);
+
 
                         int i;
                         for(i =0; i<17; i++){
@@ -203,7 +207,7 @@ public class MainActivity extends AppCompatActivity {
 
                                 myIcon = response.body().getList().get(i).getWeather().get(0).getIcon();
 
-                                String[] listOfLists = new String[]{myTime, myIcon, myTimeF};
+
                                 today_details.add(myTimeF);
                                 today_details.add(myIcon);
                                 today_details.add(current_temp);
@@ -213,9 +217,25 @@ public class MainActivity extends AppCompatActivity {
                                         "11111111111111111111 " +today_details.toString() );
                             } else{
 
-                                System.out.println("111111111111111111111" +
-                                        "111111111111111111111111" +
-                                        "11111111111111111111 out of data" );
+                                if (userUnit.trim().equals("Celsius") ){
+                                    current_temp = String.valueOf(Math.round(((response.body().
+                                            getList().get(i).getMain().
+                                            getTemp())-273.15))*100.00/100.00) +" C";
+
+                                }
+                                if (userUnit.trim().equals("Fahrenheit")){
+                                    current_temp = String.valueOf(Math.round((((response.body().
+                                            getList().get(i).getMain().
+                                            getTemp())-273.15))*9/5+32)*100.00/100.00)+ " F";
+
+                                }
+
+                                myIcon = response.body().getList().get(i).getWeather().get(0).getIcon();
+
+
+                                today_details.add(myTimeF);
+                                today_details.add(myIcon);
+                                today_details.add(current_temp);
 
 
 
