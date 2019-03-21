@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -57,7 +58,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         recyclerView = (RecyclerView) findViewById(R.id.current_temp);
         recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(getApplicationContext(),3);
+        recyclerView.setLayoutManager(gridLayoutManager);
+       // recyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this, LinearLayoutManager.HORIZONTAL, false));
 
         settingImage =(ImageView) findViewById(R.id.setting_btn);
         settingImage.setOnClickListener(new View.OnClickListener() {
@@ -118,13 +121,13 @@ public class MainActivity extends AppCompatActivity {
                                 String current_temp1 = String.valueOf(Math.round(((response.body().
                                         getList().get(0).getMain().
                                         getTemp())-273.15))*100.00/100.00);
-                                getTemp.setText((current_temp1));
+                                getTemp.setText((current_temp1)+" C");
                             }
                             if (userUnit.trim().equals("Fahrenheit")){
                                 String current_temp1 = String.valueOf(Math.round((((response.body().
                                         getList().get(0).getMain().
                                         getTemp())-273.15))*9/5+32)*100.00/100.00);
-                                getTemp.setText((current_temp1));
+                                getTemp.setText((current_temp1)+ " F");
                             }
 
                             if (response.body().getList().get(0).getMain().getTemp() < 288.0){
@@ -167,13 +170,13 @@ public class MainActivity extends AppCompatActivity {
                                 if (userUnit.trim().equals("Celsius") ){
                                     current_temp = String.valueOf(Math.round(((response.body().
                                             getList().get(i).getMain().
-                                            getTemp())-273.15))*100.00/100.00);
+                                            getTemp())-273.15))*100.00/100.00) + " C";
 
                                 }
                                 if (userUnit.trim().equals("Fahrenheit")){
                                     current_temp = String.valueOf(Math.round((((response.body().
                                             getList().get(i).getMain().
-                                            getTemp())-273.15))*9/5+32)*100.00/100.00);
+                                            getTemp())-273.15))*9/5+32)*100.00/100.00) + " F";
 
                                 }
 
@@ -188,13 +191,13 @@ public class MainActivity extends AppCompatActivity {
                                 if (userUnit.trim().equals("Celsius") ){
                                      current_temp = String.valueOf(Math.round(((response.body().
                                             getList().get(i).getMain().
-                                            getTemp())-273.15))*100.00/100.00);
+                                            getTemp())-273.15))*100.00/100.00) +" C";
 
                                 }
                                 if (userUnit.trim().equals("Fahrenheit")){
                                      current_temp = String.valueOf(Math.round((((response.body().
                                             getList().get(i).getMain().
-                                            getTemp())-273.15))*9/5+32)*100.00/100.00);
+                                            getTemp())-273.15))*9/5+32)*100.00/100.00)+ " F";
 
                                 }
 

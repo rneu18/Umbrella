@@ -70,22 +70,50 @@
 
         </LinearLayout>
 
-    <android.support.v7.widget.RecyclerView
+    <TextView
+        android:id="@+id/today"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/current_temp"
         android:layout_below="@+id/tittle_bar"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="26dp"
-        android:layout_marginEnd="0dp"
-        android:layout_marginBottom="75dp"
-        android:orientation="horizontal" />
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="13dp"
+        android:layout_marginBottom="531dp"
+        android:text="Today" />
 
     <android.support.v7.widget.RecyclerView
+        android:id="@+id/current_temp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/today"
+        android:layout_alignTop="@+id/today"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="29dp"
+        android:layout_marginEnd="0dp" />
+
+    <TextView
+        android:id="@+id/tomorrow"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/next_temp"
+        android:layout_below="@+id/current_temp"
         android:layout_alignParentBottom="true"
-        android:layout_marginTop="48dp"
-        android:layout_marginBottom="116dp" />
+        android:layout_marginTop="26dp"
+        android:layout_marginBottom="297dp"
+        android:text="Tomorrow" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/next_temp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="0dp"
+
+        android:layout_marginTop="110dp"
+        android:layout_marginEnd="0dp"
+        android:layout_marginBottom="61dp" />
 
     </RelativeLayout>
