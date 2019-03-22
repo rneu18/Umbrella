@@ -120,13 +120,13 @@ public class MainActivity extends AppCompatActivity {
                                 String current_temp1 = String.valueOf(Math.round(((response.body().
                                         getList().get(0).getMain().
                                         getTemp())-273.15))*100.00/100.00);
-                                getTemp.setText((current_temp1)+" C");
+                                getTemp.setText((current_temp1)+" °C");
                             }
                             if (userUnit.trim().equals("Fahrenheit")){
                                 String current_temp1 = String.valueOf(Math.round((((response.body().
                                         getList().get(0).getMain().
                                         getTemp())-273.15))*9/5+32)*100.00/100.00);
-                                getTemp.setText((current_temp1)+ " F");
+                                getTemp.setText((current_temp1)+ " °F");
                             }
 
                             if (response.body().getList().get(0).getMain().getTemp() < 288.0){
@@ -168,13 +168,13 @@ public class MainActivity extends AppCompatActivity {
                                 if (userUnit.trim().equals("Celsius") ){
                                     current_temp = String.valueOf(Math.round(((response.body().
                                             getList().get(i).getMain().
-                                            getTemp())-273.15))*100.00/100.00) + " C";
+                                            getTemp())-273.15))*100.00/100.00) + " °C";
 
                                 }
                                 if (userUnit.trim().equals("Fahrenheit")){
                                     current_temp = String.valueOf(Math.round((((response.body().
                                             getList().get(i).getMain().
-                                            getTemp())-273.15))*9/5+32)*100.00/100.00) + " F";
+                                            getTemp())-273.15))*9/5+32)*100.00/100.00) + " °F";
 
                                 }
 
@@ -189,13 +189,13 @@ public class MainActivity extends AppCompatActivity {
                                 if (userUnit.trim().equals("Celsius") ){
                                      current_temp = String.valueOf(Math.round(((response.body().
                                             getList().get(i).getMain().
-                                            getTemp())-273.15))*100.00/100.00) +" C";
+                                            getTemp())-273.15))*100.00/100.00) +" °C";
 
                                 }
                                 if (userUnit.trim().equals("Fahrenheit")){
                                      current_temp = String.valueOf(Math.round((((response.body().
                                             getList().get(i).getMain().
-                                            getTemp())-273.15))*9/5+32)*100.00/100.00)+ " F";
+                                            getTemp())-273.15))*9/5+32)*100.00/100.00)+ " °F";
 
                                 }
 
@@ -211,13 +211,13 @@ public class MainActivity extends AppCompatActivity {
                                 if (userUnit.trim().equals("Celsius") ){
                                     current_temp = String.valueOf(Math.round(((response.body().
                                             getList().get(i).getMain().
-                                            getTemp())-273.15))*100.00/100.00) +" C";
+                                            getTemp())-273.15))*100.00/100.00) +" °C";
 
                                 }
                                 if (userUnit.trim().equals("Fahrenheit")){
                                     current_temp = String.valueOf(Math.round((((response.body().
                                             getList().get(i).getMain().
-                                            getTemp())-273.15))*9/5+32)*100.00/100.00)+ " F";
+                                            getTemp())-273.15))*9/5+32)*100.00/100.00)+ " °F";
 
                                 }
 

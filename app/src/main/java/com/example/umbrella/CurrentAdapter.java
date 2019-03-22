@@ -54,7 +54,7 @@ public class CurrentAdapter extends RecyclerView.Adapter<CurrentAdapter.CurrentV
         String array1[]= items.get(0).get(i*3+2).split(" ");
         double temp = Double.parseDouble(array1[0]);
         String unit = array1[1];
-        if (unit.equals("C")){
+        if (unit.equals("°C")){
             if (temp < 15.0){
 
                 currentViewHolder.cardLayout.setBackgroundColor(Color.parseColor("#1e90ff"));
