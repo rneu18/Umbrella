@@ -35,17 +35,23 @@
             <TextView
                 android:id="@+id/today_time"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"/>
 
             <ImageView
                 android:id="@+id/today_icon"
                 android:layout_width="match_parent"
-                android:layout_height="50dp" />
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                />
 
             <TextView
                 android:id="@+id/today_temp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"/>
 
         </android.support.v7.widget.LinearLayoutCompat>
 
