@@ -56,13 +56,13 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        recyclerView = (RecyclerView) findViewById(R.id.current_temp);
+        recyclerView =  findViewById(R.id.current_temp);
         recyclerView.setHasFixedSize(true);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getApplicationContext(),3);
         recyclerView.setLayoutManager(gridLayoutManager);
        // recyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this, LinearLayoutManager.HORIZONTAL, false));
 
-        settingImage =(ImageView) findViewById(R.id.setting_btn);
+        settingImage = findViewById(R.id.setting_btn);
         settingImage.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, Settings.class);
@@ -97,9 +97,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<DetailWeather> call, Response<DetailWeather> response) {
                 if (response.body() !=null){
-                    getCity = (TextView) findViewById(R.id.location_name);
-                    getDescreption = (TextView) findViewById(R.id.weather_details);
-                    getTemp = (TextView) findViewById(R.id.temperature);
+                    getCity =  findViewById(R.id.location_name);
+                    getDescreption =  findViewById(R.id.weather_details);
+                    getTemp = findViewById(R.id.temperature);
 
                     LinearLayout topLayout = (LinearLayout) findViewById(R.id.tittle_bar);
 
@@ -109,7 +109,7 @@ public class MainActivity extends AppCompatActivity {
                             String array1[]= date1.split(" ");
 
                             myDate = array1[0];
-                            myTime = String.valueOf(array1[1].charAt(0))+String.valueOf(array1[1].charAt(1))+ ":00";
+                            myTime = (array1[1].charAt(0))+String.valueOf(array1[1].charAt(1))+ ":00";
 
                             String country = response.body().getCity().getCountry();
                             String city = (response.body().getCity().getName());
@@ -151,8 +151,8 @@ public class MainActivity extends AppCompatActivity {
                         tomorrowDate = dateFormat.format(tomorrow);
                         dateToday = dateFormat.format(today);
                         calendar.add(Calendar.DAY_OF_YEAR, 2);
-                        Date tomorrow2 = calendar.getTime();
-                        String tomorrowDate2 = dateFormat.format(tomorrow2);
+                        //Date tomorrow2 = calendar.getTime();
+                        //String tomorrowDate2 = dateFormat.format(tomorrow2);
 
 
                         int i;
@@ -162,17 +162,17 @@ public class MainActivity extends AppCompatActivity {
                             String array2[]= date2.split(" ");
                             String myDate2;
                             myDate2 = array2[0];
-                            myTimeF = String.valueOf(array2[1].charAt(0))+String.valueOf(array2[1].charAt(1))+ ":00";
+                            myTimeF = (array2[1].charAt(0))+String.valueOf(array2[1].charAt(1))+ ":00";
 
                             if (myDate2.equals(dateToday)){
                                 if (userUnit.trim().equals("Celsius") ){
-                                    current_temp = String.valueOf(Math.round(((response.body().
+                                    current_temp = (Math.round(((response.body().
                                             getList().get(i).getMain().
                                             getTemp())-273.15))*100.00/100.00) + " °C";
 
                                 }
                                 if (userUnit.trim().equals("Fahrenheit")){
-                                    current_temp = String.valueOf(Math.round((((response.body().
+                                    current_temp = (Math.round((((response.body().
                                             getList().get(i).getMain().
                                             getTemp())-273.15))*9/5+32)*100.00/100.00) + " °F";
 
@@ -187,13 +187,13 @@ public class MainActivity extends AppCompatActivity {
 
                             }else if (myDate2.equals(tomorrowDate)){
                                 if (userUnit.trim().equals("Celsius") ){
-                                     current_temp = String.valueOf(Math.round(((response.body().
+                                     current_temp = (Math.round(((response.body().
                                             getList().get(i).getMain().
                                             getTemp())-273.15))*100.00/100.00) +" °C";
 
                                 }
                                 if (userUnit.trim().equals("Fahrenheit")){
-                                     current_temp = String.valueOf(Math.round((((response.body().
+                                     current_temp = (Math.round((((response.body().
                                             getList().get(i).getMain().
                                             getTemp())-273.15))*9/5+32)*100.00/100.00)+ " °F";
 
@@ -209,13 +209,13 @@ public class MainActivity extends AppCompatActivity {
                             } else{
 
                                 if (userUnit.trim().equals("Celsius") ){
-                                    current_temp = String.valueOf(Math.round(((response.body().
+                                    current_temp = (Math.round(((response.body().
                                             getList().get(i).getMain().
                                             getTemp())-273.15))*100.00/100.00) +" °C";
 
                                 }
                                 if (userUnit.trim().equals("Fahrenheit")){
-                                    current_temp = String.valueOf(Math.round((((response.body().
+                                    current_temp = (Math.round((((response.body().
                                             getList().get(i).getMain().
                                             getTemp())-273.15))*9/5+32)*100.00/100.00)+ " °F";
 
@@ -233,11 +233,11 @@ public class MainActivity extends AppCompatActivity {
                         }
 
                 }else {
-                    getCity = (TextView) findViewById(R.id.location_name);
-                    getDescreption = (TextView) findViewById(R.id.weather_details);
-                    getTemp = (TextView) findViewById(R.id.temperature);
+                    getCity =  findViewById(R.id.location_name);
+                    getDescreption =  findViewById(R.id.weather_details);
+                    getTemp = findViewById(R.id.temperature);
 
-                    LinearLayout topLayout = (LinearLayout) findViewById(R.id.tittle_bar);
+                    LinearLayout topLayout =  findViewById(R.id.tittle_bar);
                     getCity.setText("No City Found");
                     getTemp.setText("");
                     getDescreption.setText("");

@@ -39,7 +39,7 @@
         android:layout_height="32dp"
         android:layout_marginTop="8dp"
         android:layout_marginLeft="10dp"
-        android:text="TextView"
+        android:text="Zip Code"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"

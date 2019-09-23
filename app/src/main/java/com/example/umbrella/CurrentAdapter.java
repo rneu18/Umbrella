@@ -8,12 +8,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class CurrentAdapter extends RecyclerView.Adapter<CurrentAdapter.CurrentViewHolder> {
@@ -67,7 +65,7 @@ public class CurrentAdapter extends RecyclerView.Adapter<CurrentAdapter.CurrentV
 
             }
 
-            if (temp <= 86.0
+            if (temp <= 30.0
                     && temp >= 15.0){
                 currentViewHolder.cardLayout.setBackgroundColor(Color.parseColor("#38CDB3"));
             }
@@ -110,10 +108,10 @@ public class CurrentAdapter extends RecyclerView.Adapter<CurrentAdapter.CurrentV
 
         public CurrentViewHolder(View itemView) {
             super(itemView);
-            cardLayout = (LinearLayoutCompat) itemView.findViewById(R.id.details_today);
-            currentImage = (ImageView) itemView.findViewById(R.id.today_icon);
-            currentTemp = (TextView) itemView.findViewById(R.id.today_temp);
-            currentTime = (TextView) itemView.findViewById(R.id.today_time);
+            cardLayout =  itemView.findViewById(R.id.details_today);
+            currentImage = itemView.findViewById(R.id.today_icon);
+            currentTemp = itemView.findViewById(R.id.today_temp);
+            currentTime = itemView.findViewById(R.id.today_time);
         }
     }
 }

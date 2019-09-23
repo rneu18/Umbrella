@@ -4,10 +4,8 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -22,6 +20,7 @@ public class Settings extends Activity implements AdapterView.OnItemSelectedList
     TextView alertArea;
     Spinner spinner;
     String myUnits;
+    int userZipCode;
 
 
 
@@ -29,10 +28,17 @@ public class Settings extends Activity implements AdapterView.OnItemSelectedList
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
-        spinner = (Spinner) findViewById(R.id.choose_units);
-        backBtn =(ImageView) findViewById(R.id.back_btn);
-        getZip = (EditText) findViewById(R.id.enter_zip);
-        alertArea = (TextView) findViewById(R.id.alert);
+        spinner =  findViewById(R.id.choose_units);
+        backBtn = findViewById(R.id.back_btn);
+        getZip = findViewById(R.id.enter_zip);
+        alertArea =  findViewById(R.id.alert);
+        SharedPreferences sharedPreferences = getSharedPreferences("Mydata", Context.MODE_PRIVATE);
+        userZipCode = sharedPreferences.getInt("zip", 0);
+        if(userZipCode > 1000){
+            String myZip = String.valueOf(userZipCode);
+            getZip.setHint(myZip);
+        }
+
 
         // Create an ArrayAdapter using the string array and a default spinner layout
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.temperature_option, android.R.layout.simple_spinner_item);
@@ -62,12 +68,23 @@ public class Settings extends Activity implements AdapterView.OnItemSelectedList
                 }
 
 
+
+
                 if(getZip.length() == 5){
                     Intent intent = new Intent(Settings.this, MainActivity.class);
                     startActivity(intent);
                     setResult(RESULT_OK, intent);
                     finish();
-                }else{
+                } else if (getZip.length() > 0){
+                    alertArea.setText("Enter 5 digit zip code");
+                }
+                else if(userZipCode > 1000){
+                    Intent intent = new Intent(Settings.this, MainActivity.class);
+                    startActivity(intent);
+                    setResult(RESULT_OK, intent);
+                    finish();
+                }
+                else {
                     alertArea.setText("Enter 5 digit zip code");
                 }
             }
